@@ -76,7 +76,7 @@ var orm = {
 		var queryString = "UPDATE " + table;
 		//updates variable with the clumn name and corresponding value to be entered
 		queryString += " SET ";
-	    queryString += objectToSql(objColumnValues);
+	    queryString += objectToSql(objectColumnValues);
 	    queryString += " WHERE ";
 	    queryString += condition;
 	    //updates an existing entry in the SQL table
