@@ -4,7 +4,7 @@ var router = express.Router();
 //import the burger model database functions
 var burger = require("../models/burger.js");
 
-router.post("/", function (request, response) {
+router.post("/api", function (request, response) {
 	burger.insertOne(["burger_name", "devoured"
 	], [
 		request.body.name, request.body.devoured

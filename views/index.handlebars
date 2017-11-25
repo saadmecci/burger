@@ -1,38 +1,116 @@
-<h1>Cats!</h1>
+<div class="container">
 
-<h2>Cats that are not sleepy!</h2>
+  <div class="row">
 
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+    <div class="col-xs-12">
 
-<h2>Cats that are sleepy!</h2>
+      <header>
+        <h1>Eat Mor Burgers!</h1>
+      </header>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+    </div>
 
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
   </div>
 
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
+  <div class="row">
+    <div class="col-xs-12">
+
+      <div class="card">
+        <div class="card-body">
+          
+          <div class="card-title">Burgers Yet to be Devoured</div>
+
+            <div class="uneatenBurgerGoesHere">
+              
+              <ul>
+                
+                {{#each burgers}}
+
+                  {{#unless devoured}}
+
+                    <li>
+                          
+                      {{this.burger_name}}
+
+                      <form action="/:id?_method=PUT" method="POST">
+                        <input type="hidden" name="burgerId" value="{{id}}">
+
+                        <button class="btn btn-warning" data-id="{{this.id}}">Eat This Burgaaa!</button>
+                      </form>
+
+                    </li>
+
+                  {{/unless}}
+
+                {{/each}}
+
+              </ul>
+
+            </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <button type="submit">Add Cat</button>
-</form>
+  <div class="row">
+    <div class="col-xs-12">
+      
+      <div class="card">
+        <div class="card-body">
+          
+          <div class="card-title">Burgers Devoured!</div>
+
+          <div class="eatenBurgerGoesHere">
+            
+            <ul>
+              
+              {{#each burgers}}
+
+                {{#if devoured}}
+
+                  <li>
+                    
+                    {{this.burger_name}}
+
+                  </li>
+
+                {{/if}}
+
+              {{/each}}
+
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    
+    <div class="col-xs-12">
+      
+      <div class="card">
+        <div class="card-body">
+          
+          <div class="card-title">Enter A Name of a Burger You Wish to Eat</div>
+
+          <form class="addBurger" action="/:id" method="POST">
+            
+            <input type="text" name="typeBurgerName" placeholder="McRib">
+            <button type="submit" class="btn btn-warning">Submit a Burger Name</button>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
